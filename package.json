@@ -1,0 +1,50 @@
+{
+  "name": "egg-ts-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate for Egg.js app using TypeScript.",
+  "dependencies": {
+    "@types/node": "^9.3.0",
+    "egg": "^2.0.0",
+    "egg-cors": "^2.0.0",
+    "egg-scripts": "^2.1.0",
+    "pg": "^7.4.1",
+    "reflect-metadata": "^0.1.10",
+    "tslib": "^1.8.1",
+    "typeorm": "^0.1.11",
+    "typescript": "^2.6.2"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "egg-bin": "^4.3.5",
+    "egg-ci": "^1.8.0",
+    "egg-mock": "^3.13.0",
+    "tslint": "^5.8.0"
+  },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "scripts": {
+    "clean": "rimraf app/**/*.{js,map} app/*.{js,map} config/**/*.{js,map}",
+    "tsc": "tsc -p tsconfig.json",
+    "tsc:w": "tsc -p tsconfig.json -w",
+    "start": "npm run tsc && egg-scripts start --daemon",
+    "stop": "egg-scripts stop",
+    "devegg": "egg-bin dev",
+    "debug": "egg-bin debug",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "tslint -c tslint.json .",
+    "ci": "npm run lint && npm run cov",
+    "dev": "concurrently --kill-others \"npm run tsc:w\" \"npm run devegg\""
+  },
+  "ci": {
+    "version": "8, 9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:brickyang/egg-ts-boilerplate.git"
+  },
+  "author": "brick <brick.c.yang@gmail.com>",
+  "license": "MIT"
+}
